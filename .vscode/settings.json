@@ -1,0 +1,54 @@
+{
+    "cSpell.language": "es",
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        79
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "make",
+            "tools": [
+                "make"
+            ],
+        },
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "make",
+            "command": "make",
+            "args": [],
+            "env": {}
+        },
+    ],
+    "latex-workshop.view.pdf.external.viewer.command": "evince",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "%PDF%"
+    ],
+    "python.formatting.provider": "none",
+    "cSpell.words": [
+        "algorizmi",
+        "Dixit",
+        "flujograma",
+        "ingenierizados",
+        "Juarismi",
+        "mnemotécnicas",
+        "pseudocódigo",
+        "pseudocódigos",
+        "subsecciones"
+    ],
+    "[latex]": {
+        "editor.rulers": [
+            72,
+            79
+        ],
+        "editor.formatOnPaste": false,
+        "editor.suggestSelection": "recentlyUsedByPrefix"
+    },
+    "[python]": {
+        "editor.rulers": [
+            72,
+            79
+        ],
+        "editor.wordBasedSuggestions": false
+    }
+}

@@ -1,0 +1,45 @@
+% ### Definición de terminología nueva.
+\makeatletter
+\newcommand{\@terminology}[2][]{\index{#1}{\boldmath \bfseries #2}}
+\newcommand\terminology{\@dblarg\@terminology}
+\makeatother
+
+% ### Entorno para hacer divagaciones
+\newcommand{\digresswidth}{0.985\textwidth}
+\colorlet{digresscolor}{Linen}
+\newsavebox{\digressbox}
+\newenvironment{digress}[1]{
+    \begin{lrbox}{\digressbox}\begin{minipage}{\digresswidth}
+            {\subsubsection*{{\normalfont\emoji{mag}} #1}}}
+            {\end{minipage}\end{lrbox}
+    \bigskip\par\noindent%
+    \colorbox{digresscolor}{\usebox{\digressbox}}\bigskip}
+
+% Matemáticas
+% -----------
+% ### Entornos matemáticos
+\newtheoremstyle{plain}{}{}{}{}{\bfseries\sffamily}{:}{\newline}{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{corollary}[theorem]{Corolario}
+
+\newtheoremstyle{definition}{}{}{}{}{\bfseries\sffamily}{:}{ }{}
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[chapter]
+\newtheorem{example}{Ejemplo}[chapter]
+\newtheorem{problem}{Problema}[chapter]
+\newtheorem{exercise}{Ejercicio}[chapter]
+
+\newtheoremstyle{remark}{}{}{}{}{\sffamily\itshape}{:}{ }{}
+\theoremstyle{remark}
+\newtheorem*{remark}{Observación}
+\newtheorem*{note}{Nota}
+
+\renewcommand{\qedsymbol}{\blacksquare}
+
+% ### Notación
+\newcommand{\Verdadero}{\textsc{Verdadero}}
+\newcommand{\Falso}{\textsc{Falso}}

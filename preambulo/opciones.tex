@@ -1,0 +1,87 @@
+% Opciones generales
+% ------------------
+% ### Fuentes tipográficas
+\setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
+\setsansfont[Ligatures=TeX]{TeX Gyre Heros}
+\setmonofont[Scale=0.972]{JetBrains Mono NL}
+\setmathfont{TeX Gyre Pagella Math}
+
+% ### Sentencias integradas
+%\DeclareRobustCommand\verbvisiblespace{\textcolor{Silver}{\textvisiblespace}}
+
+% KOMAScript 
+% ----------
+\colorlet{sectioningcolor}{MidnightBlue}
+\colorlet{secondarycolor}{DimGray}
+\KOMAoptions{
+  BCOR=5mm,
+  DIV=10,
+  headings=big,
+  headsepline,
+  headinclude=false,
+  footinclude=false
+}
+
+\clearpairofpagestyles
+\lehead{\pagemark\qquad\leftmark}
+\rohead{\rightmark\qquad\pagemark}
+\ofoot[\scshape\pagemark]{}
+\renewcommand{\headfont}{\normalsize\sffamily}
+\setkomafont{pagenumber}{\sffamily\bfseries}
+
+% ### Capítulos
+\setkomafont{disposition}{ %
+  \color{sectioningcolor}\rmfamily\bfseries\scshape}
+\renewcommand*{\chapterformat}{%
+  \color{secondarycolor}\bfseries\Huge%
+  \mbox{\chapappifchapterprefix{\nobreakspace}\thechapter%
+    \autodot\IfUsePrefixLine{}{\enskip}}}
+\addtokomafont{chapter}{\color{sectioningcolor}}
+\makeatletter
+\renewcommand{\chapterlinesformat}[3]{%
+  \parbox{\dimexpr\linewidth-2\fboxrule-2\fboxsep}{%
+    \raggedchapter
+    \@hangfrom{#2}#3%
+  }\newline%
+}
+\makeatother
+
+% ### Párrafos
+\makeatletter
+\def\@afterindentfalse{\let\if@afterindent\iffalse}
+\makeatother
+
+% ### Enumeraciones
+\renewcommand{\labelenumi}%
+{\usefamilyofkomafont{disposition}\color{sectioningcolor}\theenumi.}
+\setkomafont{descriptionlabel}%
+{\usefamilyofkomafont{disposition}\color{sectioningcolor}\itshape}
+
+% ### Figuras
+\setkomafont{captionlabel}{\usekomafont{sectioning}}
+% Figuras centradas:
+\makeatletter
+\g@addto@macro\@floatboxreset{\centering}
+\makeatother
+
+% ### Minted
+\setminted{frame=lines}
+\setminted{fontsize=\footnotesize}
+\usemintedstyle{tango}
+
+% ### algorithm2e
+\DontPrintSemicolon
+\SetAlCapFnt{\usefontofkomafont{sectioning}\color{sectioningcolor}}
+\SetAlCapSty{}
+
+% ### nomencl
+\renewcommand*{\pagedeclaration}[1]{\unskip, p. \hyperpage{#1}.}
+
+% Diagramas
+% ---------
+\graphicspath{{figuras/}}
+\usetikzlibrary {matrix, shapes.geometric, shapes.misc}
+
+% Blibliografía
+% -------------
+\addbibresource{bibliografia.bib}
