@@ -1,8 +1,23 @@
 {
+    "[latex]": {
+        "editor.rulers": [
+            80
+        ],
+        "editor.formatOnPaste": false,
+        "editor.suggestSelection": "recentlyUsedByPrefix",
+        "editor.wordBasedSuggestions": false
+    },
+    "[python]": {
+        "editor.rulers": [
+            72,
+            79
+        ],
+        "editor.wordBasedSuggestions": false
+    },
     "cSpell.language": "es",
     "editor.formatOnSave": true,
     "editor.rulers": [
-        79
+        80
     ],
     "latex-workshop.latex.recipes": [
         {
@@ -35,20 +50,5 @@
         "pseudocódigo",
         "pseudocódigos",
         "subsecciones"
-    ],
-    "[latex]": {
-        "editor.rulers": [
-            72,
-            79
-        ],
-        "editor.formatOnPaste": false,
-        "editor.suggestSelection": "recentlyUsedByPrefix"
-    },
-    "[python]": {
-        "editor.rulers": [
-            72,
-            79
-        ],
-        "editor.wordBasedSuggestions": false
-    }
+    ]
 }
