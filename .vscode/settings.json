@@ -5,14 +5,14 @@
         ],
         "editor.formatOnPaste": false,
         "editor.suggestSelection": "recentlyUsedByPrefix",
-        "editor.wordBasedSuggestions": false
+        "editor.wordBasedSuggestions": "off"
     },
     "[python]": {
         "editor.rulers": [
             72,
             79
         ],
-        "editor.wordBasedSuggestions": false
+        "editor.wordBasedSuggestions": "off"
     },
     "cSpell.language": "es",
     "editor.formatOnSave": true,
