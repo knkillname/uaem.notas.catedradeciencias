@@ -4,7 +4,7 @@
 \newcommand\terminology{\@dblarg\@terminology}
 \makeatother
 
-% ### Entorno para hacer divagaciones
+% ### Entorno para hacer divagaciones 'digress'
 \newcommand{\digresswidth}{0.985\textwidth}
 \colorlet{digresscolor}{Linen}
 \newsavebox{\digressbox}
@@ -14,6 +14,18 @@
             {\end{minipage}\end{lrbox}
     \bigskip\par\noindent%
     \colorbox{digresscolor}{\usebox{\digressbox}}\bigskip}
+
+% ### Entorno para resaltar conceptos importantes 'remember'
+% con un emoji de disquete.
+\newcommand{\rememberwidth}{0.985\textwidth}
+\colorlet{remembercolor}{Lavender}
+\newsavebox{\rememberbox}
+\newenvironment{remember}{
+    \begin{lrbox}{\rememberbox}\begin{minipage}{\rememberwidth}
+            {\subsubsection*{{\normalfont\emoji{floppy-disk}} Para recordar}}}
+            {\end{minipage}\end{lrbox}
+    \bigskip\par\noindent%
+    \colorbox{remembercolor}{\usebox{\rememberbox}}\bigskip}
 
 % Matemáticas
 % -----------

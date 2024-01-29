@@ -1,0 +1,101 @@
+\documentclass[letterpaper, 12pt, fleqn, twoside, chapter, spanish]{scrbook}
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+\gappto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{makeidx}
+\usepackage[newfloat]{minted}
+\usepackage{graphicx}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usepackage{scrlayer-scrpage}
+\usepackage[refpage]{nomencl} 
+\usepackage{multicol}
+\usepackage{IEEEtrantools}
+\usepackage[vlined, onelanguage, spanish, tworuled, algochapter]{algorithm2e}
+\usepackage{emoji}
+\usepackage{unicode-math}
+\usepackage{fontspec}
+\usepackage[backend=biber, style=numeric, sorting=anyt]{biblatex}
+\usepackage[unicode=true, pdfusetitle, bookmarks=true, bookmarksnumbered=true,
+    bookmarksopen=false, breaklinks=true, pdfborder={0 0 0}, pdfborderstyle={},
+    backref=false, colorlinks=false, pdfencoding=unicode, linkcolor=FireBrick,
+    citecolor=ForestGreen, urlcolor=DarkOrchid]{hyperref}
+
+\input{preambulo/opciones.tex}
+\input{preambulo/definiciones.tex}
+
+% Comandos del preámbulo
+% ----------------------
+\makeindex
+
+% Contenidos del documento
+% ------------------------
+\begin{document}
+% Datos del documento
+% -------------------
+\subject{Notas de curso}
+\title{Cátedra de Ciencias}
+\author{Dr. Mario Abarca}
+\date{v0.0.2-alpha}
+
+% Datos de la portadilla
+% ----------------------
+\uppertitleback{}
+\lowertitleback{%
+    \noindent\begin{minipage}[t]{1\columnwidth}
+        Este trabajo está licenciado bajo CC BY-SA 4.0.
+        Para ver una copia de esta licencia, visite
+        \url{https://creativecommons.org/licenses/by-sa/4.0/deed.es}.
+        \paragraph*{Usted es libre de:}
+        \begin{description}
+            \item[{Compartir}] -- copiar y redistribuir el material en cualquier
+                medio o formato para cualquier propósito, incluso
+                comercialmente.
+            \item[{Adaptar}] -- remezclar, transformar y construir a partir del
+                material para cualquier propósito, incluso comercialmente.
+        \end{description}
+        El licenciante no puede revocar estas libertades en tanto usted siga los
+        términos de la licencia.
+        \vspace{1em}
+        \paragraph*{Bajo los siguientes términos:}
+        \begin{description}
+            \item[{Atribución}]  — Usted debe dar crédito de manera
+                adecuada , brindar un enlace a la licencia, e indicar si se
+                han realizado cambios.
+                Puede hacerlo en cualquier forma razonable, pero no de forma
+                tal que sugiera que usted o su uso tienen el apoyo de el
+                licenciante.
+            \item[{Compartir igual}] — Si remezcla, transforma o crea a
+                partir del material, debe distribuir su contribución bajo la
+                misma licencia del original.
+            \item[{No hay restricciones adicionales}] — No puede aplicar
+                términos legales ni medidas tecnológicas que restrinjan
+                legalmente a otras a hacer cualquier uso permitido por la
+                licencia.
+        \end{description}
+    \end{minipage}
+}
+
+
+\frontmatter
+\maketitle
+\tableofcontents
+\include{capitulos/prefacio.tex}
+\mainmatter
+\include{capitulos/filosofiaciencia.tex}
+\include{capitulos/articuloscientificos.tex}
+\include{capitulos/presentaciones.tex}
+\include{capitulos/modeloporcompetencias.tex}
+
+\appendix
+\printbibliography[heading=bibintoc]{}
+
+\backmatter
+% Índice general
+\cleardoublepage
+\pdfbookmark[0]{\indexname}{idx}
+\printindex
+\end{document}

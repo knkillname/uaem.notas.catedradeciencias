@@ -1,4 +1,4 @@
-DOCUMENTO = notas
+DOCUMENTO = catedraciencias
 ARCHIVOS_TEX = \
 	$(DOCUMENTO).tex \
 	$(wildcard capitulos/*.tex) \
