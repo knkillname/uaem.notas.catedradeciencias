@@ -487,6 +487,10 @@ En lógica de primer orden, este razonamiento se puede expresar como sigue:
 Este tipo de razonamiento es muy común en las matemáticas y la lógica;
 probablemente antes de este curso ya lo habías usado en los cursos de
 matemáticas.
+Los razonamientos deductivos generalmente comienzan enunciando aquello que se da
+por cierto (los \emph{axiomas}), y a partir de estos se derivan conclusiones
+(\emph{teoremas}).
+
 Los científicos utilizan la deducción para derivar predicciones de sus teorías,
 a veces de forma tan natural que ni siquiera se dan cuenta.
 Por ejemplo, la teoría de la evolución por selección natural dice que todos los
@@ -512,6 +516,72 @@ hacer con ellas.
 De la misma forma, la lógica deductiva es un juego de palabras al que no le
 importa el significado de estas; si las premisas son verdaderas y se siguen las
 reglas de la lógica, entonces la conclusión también es verdadera.
+
+La deducción se usa comúnmente en el ámbito científico para derivar
+\emph{explicaciones} a partir de teorías.
+Según el filósofo de la ciencia \index{Hempel, Carl}{Carl Hempel} (1905--1997),
+todas las explicaciones científicas tienen la siguiente estructura:
+\begin{description}
+    \item[Explanandum] Existe un fenómeno que queremos explicar; generalmente
+        es una observación particular.
+    \item[Explanans] Para dar explicación al fenómeno, usamos nuestros
+        conocimientos previos, que incluyen leyes generales y las condiciones
+        iniciales específicas en las que ocurrió el fenómeno.
+\end{description}
+
+La explicación científica es, entonces, el razonamiento deductivo que trata al
+fenómeno que queremos explicar como un teorema que se sigue de las leyes
+generales y las condiciones iniciales.
+Por ejemplo, si quiero explicar por qué la taza de café que dejé en la mesa se
+enfrió, puedo apelar a la segunda ley de la termodinámica que dice que el calor
+fluye de los cuerpos calientes a los fríos.
+Dado que la taza de café estaba caliente rodeada de aire frío, puedo deducir que
+el calor de la taza de café fluyó al aire, concluyendo así que la taza de café
+se enfrió.
+Normalmente no hacemos este razonamiento de forma consciente ni de manera tan
+estructurada; en cambio, lo hacemos de forma natural y omitiendo muchos detalles
+que consideramos obvios.
+Así, para explicar por qué Juan está ebrio, simplemente decimos \emph{Juan tomó
+    tequila}, y omitimos el resto de la deducción.
+
+\begin{figure}
+    \centering
+    \begin{minted}{prolog}
+% El tequila contiene alcohol.
+contiene(tequila, alcohol).
+
+% Una persona bebe una sustancia si esta está contenida
+% en la bebida que la persona bebe.
+beber(Persona, Sustancia) :-
+    contiene(Bebida, Sustancia),
+    beber(Persona, Bebida).
+
+% Juan bebe tequila.
+beber(juan, tequila).
+
+% Una persona está ebria si bebe alcohol.
+ebrio(Persona) :-
+    beber(Persona, alcohol).
+
+% ¿Está Juan ebrio?
+consulta :- (
+        ebrio(juan) -> writeln('Juan está ebrio')
+        ; writeln('Juan no está ebrio')
+    ),
+    halt.
+:- initialization(consulta).
+\end{minted}
+    \caption{Programa en Prolog que usa lógica deductiva para determinar si
+        Juan está ebrio.
+        Nuestra mente rara vez hace un razonamiento tan formal como lo requiere
+        una computadora.}
+\end{figure}
+
+Sin embargo, nótese que este modelo de Hempel no distingue entre explicaciones y
+predicciones: el mismo razonamiento deductivo que nos lleva a explicar por qué
+la taza de café se enfrió también nos lleva a predecir que las tazas de café que
+dejemos en al aire frío se enfriarán, o que Juan se embriagará cada vez que
+tome tequila.
 
 \subsection*{Inducción}
 \label{sub:induccion}
