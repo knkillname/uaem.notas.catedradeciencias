@@ -1,5 +1,11 @@
 # Registro de cambios
 
+## 0.1.0 - 2024-02-25
+
+### Agregado
+- Sección dedicada a las revoluciones científicas
+- Sección de críticas a la ciencia
+
 ## 0.0.2 - 2024-01-28
 
 ### Agregado
