@@ -1,4 +1,10 @@
 # Registro de cambios
+## 0.1.1 - 2024-03-17
+
+### Agregado
+- Inicio del capítulo 2, de la literatura científica
+- Contexto histórico de las publicaciones científicas
+- Sección de cómo leer un artículo científico
 
 ## 0.1.0 - 2024-02-25
 
