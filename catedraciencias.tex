@@ -19,7 +19,7 @@
 \usepackage{emoji}
 \usepackage{unicode-math}
 \usepackage{fontspec}
-\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage[backend=biber, style=numeric]{biblatex}
 \usepackage[unicode=true, pdfusetitle, bookmarks=true, bookmarksnumbered=true,
     bookmarksopen=false, breaklinks=true, pdfborder={0 0 0}, pdfborderstyle={},
     backref=false, colorlinks=false, pdfencoding=unicode, linkcolor=FireBrick,
@@ -92,6 +92,10 @@
 \include{capitulos/modeloporcompetencias.tex}
 
 \appendix
+
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
 \printbibliography[heading=bibintoc]{}
 
 \backmatter

@@ -960,50 +960,50 @@ Es sólo cuando las anomalías se vuelven demasiado grandes que el modelo
 establecido se cuestiona y entra en una crisis que culmina con la propuesta y
 aceptación de un nuevo paradigma.
 
-\begin{figure}[ht]
-    \centering
+% \begin{figure}[ht]
+%     \centering
 
-    \begin{tikzpicture}[
-            node distance=1cm,
-            ellipsenode/.style={ellipse, draw, fill=Lavender},
-            rectanglenode/.style={
-                    rectangle,
-                    draw,
-                    minimum width=6cm,
-                    minimum height=1.5cm,
-                    fill=Gold
-                },
-            >=stealth,
-            line width=1pt
-        ]
+%     \begin{tikzpicture}[
+%             node distance=1cm,
+%             ellipsenode/.style={ellipse, draw, fill=Lavender},
+%             rectanglenode/.style={
+%                     rectangle,
+%                     draw,
+%                     minimum width=6cm,
+%                     minimum height=1.5cm,
+%                     fill=Gold
+%                 },
+%             >=stealth,
+%             line width=1pt
+%         ]
 
-        \node[rectanglenode] (pre) {Fase pre-científica};
-        \node[ellipsenode, below=of pre] (acept) {Aceptación de un paradigma};
-        \node[rectanglenode, below=of acept] (normal) {Fase de ciencia normal};
-        \node[ellipsenode, below=of normal] (anom) {Aparición de anomalías};
-        \node[ellipsenode, below=of anom] (nuevo) {Nuevo paradigma};
-        \node[rectanglenode, below=of nuevo] (rev) %
-        {Fase de revolución científica};
+%         \node[rectanglenode] (pre) {Fase pre-científica};
+%         \node[ellipsenode, below=of pre] (acept) {Aceptación de un paradigma};
+%         \node[rectanglenode, below=of acept] (normal) {Fase de ciencia normal};
+%         \node[ellipsenode, below=of normal] (anom) {Aparición de anomalías};
+%         \node[ellipsenode, below=of anom] (nuevo) {Nuevo paradigma};
+%         \node[rectanglenode, below=of nuevo] (rev) %
+%         {Fase de revolución científica};
 
-        \draw[->] (pre) -- (acept);
-        \draw[->] (acept) -- (normal);
-        \draw[->] (normal) -- (anom);
-        \draw[->] (anom) -- (nuevo);
-        \draw[->] (nuevo) -- (rev);
-        \draw[->, dashed] (rev.east) to[out=0,in=0] (acept.east);
-    \end{tikzpicture}
+%         \draw[->] (pre) -- (acept);
+%         \draw[->] (acept) -- (normal);
+%         \draw[->] (normal) -- (anom);
+%         \draw[->] (anom) -- (nuevo);
+%         \draw[->] (nuevo) -- (rev);
+%         \draw[->, dashed] (rev.east) to[out=0,in=0] (acept.east);
+%     \end{tikzpicture}
 
-    \caption{Según Kuhn, la ciencia no es un proceso lineal y acumulativo, sino
-        que se da en ciclos donde un paradigma establecido es reemplazado por
-        uno nuevo, que no necesariamente mejora al anterior.}
-\end{figure}
+%     \caption{Según Kuhn, la ciencia no es un proceso lineal y acumulativo, sino
+%         que se da en ciclos donde un paradigma establecido es reemplazado por
+%         uno nuevo, que no necesariamente mejora al anterior.}
+% \end{figure}
 
 \begin{remember}
     \label{rem:paradigma}
-    Un \terminology{paradigma} es el conjunto de creencias y valores compartidos
-    por los científicos de un área.
-    Este define la manera de hacer \terminology{ciencia normal} en dicha área.
-    Solo cuando las anomalías se vuelven demasiado grandes el paradigma entra
+    Un \terminology{paradigma} es el conjunto de creencias compartidos por los
+    científicos de un área y define la manera en que se hace la
+    \terminology{ciencia normal}.
+    Cuando las anomalías se vuelven demasiado grandes el paradigma entra
     en crisis y ocurre una \terminology{revolución científica}.
 \end{remember}
 
@@ -1047,8 +1047,10 @@ de fe que un acto racional.
 \begin{remember}
     \label{rem:inconmensurabilidad}
     La \terminology{inconmensurabilidad} de los paradigmas significa que no
-    existe un lenguaje común para comparar teorías rivales, y por lo tanto no
-    se puede decidir cuál teoría es la verdadera.
+    existe un lenguaje común para comparar teorías rivales y decidir cuál teoría
+    es la verdadera.
+    Por lo tanto, los nuevos paradigmas no necesariamente son mejores que
+    aquellos que reemplazan.
 \end{remember}
 
 En las ediciones posteriores de su libro, Kuhn suavizó un poco su postura y
@@ -1150,11 +1152,11 @@ siempre pelea en las fiestas familiares.
         naturales.}
 \end{figure}
 
-Sin embargo, recordemos que en realidad no existe un método científico único ni
-general, y que la ciencia no es una disciplina monolítica, sino que es un
-conjunto de disciplinas heterogéneas hechas por seres humanos.
+Dado que no existe un método científico general, la ciencia un conjunto de
+disciplinas heterogéneas hechas por humanos.
 Por lo tanto, diferenciar entre ciencias exactas y ciencias humanas es una
-distinción más bien artificial.
+distinción más bien artificial y dogmática.
+
 
 \subsection*{Ciencia vs. Religión}
 \label{sub:cienciavsreligion}
