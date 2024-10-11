@@ -19,6 +19,7 @@
     "editor.rulers": [
         80
     ],
+    "latex-workshop.formatting.latex": "latexindent",
     "latex-workshop.latex.recipes": [
         {
             "name": "make",
