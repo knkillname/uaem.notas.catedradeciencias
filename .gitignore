@@ -135,6 +135,7 @@ acs-*.bib
 *.4tc
 *.idv
 *.lg
+*.tmp
 *.trc
 *.xref
 
@@ -299,3 +300,16 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
+
+## EPUB output
+*.epub
+*.bbl-SAVE-ERROR
+*.html
+*.ncx
+content.opf
+catedraciencias.css
+catedraciencias-epub/
+epub/
+
+## LuaLaTeX temporary directories
+luatex.*/

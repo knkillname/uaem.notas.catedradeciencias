@@ -9,9 +9,12 @@ ARCHIVOS_PDFTEX = $(patsubst %.svg, %.pdf_tex, $(ARCHIVOS_SVG))
 AUX_DIR = auxiliares
 DEPENDENCIAS = $(ARCHIVOS_TEX) $(ARCHIVOS_PDFTEX) \
 	$(ARCHIVOS_CODIGO) bibliografia.bib
+ARCHIVOS_EPUB = epub.cfg epub.css
 
 .PHONY: clean
 .PHONY: view
+.PHONY: epub
+.PHONY: epub-view
 
 $(DOCUMENTO).pdf: $(DEPENDENCIAS)
 	latexmk -shell-escape -synctex=1 -pdflatex=lualatex \
@@ -23,6 +26,16 @@ figuras/%.pdf_tex : figuras/%.svg
 
 $(AUX_DIR):
 	mkdir auxiliares --verbose --parents
+
+# EPUB target
+$(DOCUMENTO).epub: $(ARCHIVOS_TEX) $(ARCHIVOS_CODIGO) bibliografia.bib $(ARCHIVOS_EPUB) img/*
+	-tex4ebook -l -c epub.cfg -d epub $(DOCUMENTO).tex
+	cp -n epub/$(DOCUMENTO).epub $(DOCUMENTO).epub 2>/dev/null || true
+
+epub: $(DOCUMENTO).epub
+
+epub-view: $(DOCUMENTO).epub
+	xdg-open $(DOCUMENTO).epub
 
 clean:
 	git clean -Xdf

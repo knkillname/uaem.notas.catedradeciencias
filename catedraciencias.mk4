@@ -1,0 +1,3 @@
+-- catedraciencias.mk4
+-- make4ht build file for EPUB3 output of Catedra de Ciencias
+-- CSS is embedded in epub.cfg via \Css{} blocks

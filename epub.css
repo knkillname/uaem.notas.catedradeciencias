@@ -1,0 +1,268 @@
+/* epub.css — Stylesheet for the EPUB3 version of Cátedra de Ciencias */
+/* Referenced from epub.cfg via @import.                     */
+
+/* ---- Base typography ---- */
+body {
+    font-family: "Georgia", "Liberation Serif", serif;
+    line-height: 1.6;
+    color: #222;
+    margin: 0;
+    padding: 0.5em;
+    widows: 2;
+    orphans: 2;
+}
+
+/* ---- Headings ---- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    color: #1a237e;
+    /* MidnightBlue */
+    page-break-after: avoid;
+}
+
+h1 {
+    font-size: 1.6em;
+    border-bottom: 2px solid #1a237e;
+    padding-bottom: 0.3em;
+    margin-top: 1.5em;
+}
+
+h2 {
+    font-size: 1.3em;
+    margin-top: 1.3em;
+}
+
+h3 {
+    font-size: 1.1em;
+    margin-top: 1em;
+}
+
+h4 {
+    font-size: 1em;
+    margin-top: 0.8em;
+}
+
+/* ---- Paragraphs ---- */
+p {
+    margin: 0.5em 0;
+    text-align: justify;
+    text-indent: 1.5em;
+}
+
+p.noindent {
+    text-indent: 0;
+}
+
+/* ---- Links ---- */
+a {
+    color: #1a237e;
+    text-decoration: underline;
+}
+
+/* ---- Small caps (Verdadero / Falso) ---- */
+.sc {
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+/* ---- Terminology ---- */
+.terminology {
+    font-weight: bold;
+}
+
+/* ---- Digression box (🪄) ---- */
+.digress {
+    background-color: #fff0e0;
+    /* Linen */
+    border: 1px solid #d4a574;
+    border-radius: 4px;
+    padding: 0.8em 1em;
+    margin: 1em 0;
+}
+
+.digress-title {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    color: #8b4513;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0 0 0.5em 0;
+}
+
+/* ---- Remember box (💾) ---- */
+.remember {
+    background-color: #e6e6fa;
+    /* Lavender */
+    border: 1px solid #9c9cdd;
+    border-radius: 4px;
+    padding: 0.8em 1em;
+    margin: 1em 0;
+}
+
+.remember-title {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    color: #4a4a8a;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0 0 0.5em 0;
+}
+
+/* ---- Theorem-like environments ---- */
+.theorem,
+.lemma,
+.proposition,
+.corollary {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border-left: 4px solid #1a237e;
+    background-color: #f5f5ff;
+}
+
+.definition,
+.example,
+.problem,
+.exercise {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border-left: 4px solid #2e7d32;
+    background-color: #f0faf0;
+}
+
+.remark,
+.note {
+    margin: 1em 0;
+    padding: 0.3em 1em;
+    border-left: 4px solid #ff8f00;
+    background-color: #fff8e1;
+}
+
+/* ---- Code listings (minted) ---- */
+.minted {
+    font-family: "Courier New", "Liberation Mono", monospace;
+    font-size: 0.85em;
+    background: #f5f5f5;
+    padding: 0.5em;
+    border-left: 3px solid #1a237e;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin: 0.8em 0;
+}
+
+/* ---- Images ---- */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+figure {
+    margin: 1em 0;
+    text-align: center;
+    page-break-inside: avoid;
+}
+
+figcaption {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 0.3em;
+}
+
+/* ---- Tables ---- */
+table {
+    border-collapse: collapse;
+    margin: 1em auto;
+    font-size: 0.95em;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 0.3em 0.6em;
+}
+
+th {
+    background-color: #e8eaf6;
+    font-weight: bold;
+}
+
+/* ---- Table of contents ---- */
+.toc-chapter {
+    font-weight: bold;
+    margin-top: 0.8em;
+}
+
+.toc-section {
+    margin-left: 1.5em;
+}
+
+.toc-subsection {
+    margin-left: 3em;
+}
+
+/* ---- Title page ---- */
+.title-block {
+    text-align: center;
+    margin: 3em 0;
+}
+
+.title-block h1 {
+    font-size: 2em;
+    border: none;
+    margin-bottom: 0.2em;
+}
+
+.title-block .author {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* ---- Cover image ---- */
+.cover {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.cover img {
+    max-width: 100%;
+    height: 100vh;
+}
+
+/* ---- Maths ---- */
+math {
+    font-size: 1.05em;
+}
+
+/* ---- Lists ---- */
+ul,
+ol {
+    margin: 0.5em 0;
+    padding-left: 2em;
+}
+
+li {
+    margin: 0.2em 0;
+}
+
+/* ---- Blockquotes ---- */
+blockquote {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border-left: 4px solid #bbb;
+    color: #444;
+    font-style: italic;
+}
+
+/* ---- Horizontal rules ---- */
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 1.5em 0;
+}
