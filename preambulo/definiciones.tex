@@ -5,8 +5,8 @@
 \makeatother
 
 % Comando para referenciar personas en el texto y el índice
-% \person{Aristóteles} → índice: "Aristóteles"
-% \person[Bacon]{Francis} → typeset: "Francis Bacon", índice: "Bacon, Francis"
+% \person{Aristóteles} → índice: “Aristóteles”
+% \person[Bacon]{Francis} → typeset: “Francis Bacon”, índice: “Bacon, Francis”
 \newcommand{\person}[2][]{%
   \ifx\relax#1\relax
     #2\index{#2}%
@@ -30,13 +30,13 @@
 \colorlet{digresscolor}{Linen}
 \newsavebox{\digressbox}
 \newenvironment{digress}[1]{
-    \begin{lrbox}{\digressbox}\begin{minipage}{\digresswidth}
-            \setlength{\parindent}{\normalparindent}%
-            {\subsubsection*{{\normalfont\emoji{mag}} #1}}}
-            {\end{minipage}\end{lrbox}
-    \bigskip\par\noindent%
-    \tikz[baseline]{\node[fill=digresscolor, rounded corners=\bgboxradius,
-          inner sep=\bgboxpadding]{\usebox{\digressbox}};}\bigskip}
+  \begin{lrbox}{\digressbox}\begin{minipage}{\digresswidth}
+      \setlength{\parindent}{\normalparindent}%
+      {\subsubsection*{{\normalfont\emoji{mag}} #1}}}
+      {\end{minipage}\end{lrbox}
+  \bigskip\par\noindent%
+  \tikz[baseline]{\node[fill=digresscolor, rounded corners=\bgboxradius,
+      inner sep=\bgboxpadding]{\usebox{\digressbox}};}\bigskip}
 
 % ### Entorno para resaltar conceptos importantes 'remember'
 % con un emoji de disquete.
@@ -44,13 +44,13 @@
 \colorlet{remembercolor}{Lavender}
 \newsavebox{\rememberbox}
 \newenvironment{remember}{
-    \begin{lrbox}{\rememberbox}\begin{minipage}{\rememberwidth}
-            \setlength{\parindent}{\normalparindent}%
-            {\subsubsection*{{\normalfont\emoji{floppy-disk}} Para recordar}}}
-            {\end{minipage}\end{lrbox}
-    \bigskip\par\noindent%
-    \tikz[baseline]{\node[fill=remembercolor, rounded corners=\bgboxradius,
-          inner sep=\bgboxpadding]{\usebox{\rememberbox}};}\bigskip}
+  \begin{lrbox}{\rememberbox}\begin{minipage}{\rememberwidth}
+      \setlength{\parindent}{\normalparindent}%
+      {\subsubsection*{{\normalfont\emoji{floppy-disk}} Para recordar}}}
+      {\end{minipage}\end{lrbox}
+  \bigskip\par\noindent%
+  \tikz[baseline]{\node[fill=remembercolor, rounded corners=\bgboxradius,
+      inner sep=\bgboxpadding]{\usebox{\rememberbox}};}\bigskip}
 
 % Matemáticas
 % -----------
