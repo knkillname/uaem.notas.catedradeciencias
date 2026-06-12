@@ -270,7 +270,12 @@ Los detalles varían de disciplina a disciplina, pero en general se basan en tre
 \label{sub:deduccion}
 La deducción es un método de razonamiento que consiste en partir de premisas generales para llegar a una conclusión.
 Por ejemplo, si sabemos que todos los seres humanos son mortales, y que Mahoma es un ser humano, entonces podemos deducir que Mahoma es mortal.
-En lógica de primer orden, este razonamiento se puede expresar como sigue: \begin{align*} & \mathit{HUMANO}(x) \Rightarrow \mathit{MORTAL}(x) & \text{(1)}        \\ & \mathit{HUMANO}(\mathit{MAHOMA})                  & \text{(2)}        \\ \hline \therefore & \mathit{MORTAL}(\mathit{MAHOMA})                  & \text{(de 1 y 2)} \end{align*}
+En lógica de primer orden, este razonamiento se puede expresar como sigue:
+\begin{align*}
+                 & \mathit{HUMANO}(x) \Rightarrow \mathit{MORTAL}(x) & \text{(1)}        \\
+                 & \mathit{HUMANO}(\mathit{MAHOMA})                  & \text{(2)}        \\
+    \therefore\  & \mathit{MORTAL}(\mathit{MAHOMA})                  & \text{(de 1 y 2)}
+\end{align*}
 
 Este tipo de razonamiento es muy común en las matemáticas y la lógica.
 Los razonamientos deductivos generalmente comienzan enunciando aquello que se da por cierto (los \emph{axiomas}), y a partir de estos se derivan conclusiones (\emph{teoremas}).
@@ -328,10 +333,8 @@ consulta :- (
     halt.
 :- initialization(consulta).
 \end{minted}
-    \caption{Programa en Prolog que usa lógica deductiva para determinar si
-        Juan está ebrio.
-        Nuestra mente rara vez hace un razonamiento tan formal como lo requiere
-        una computadora.}
+    \caption{Programa en Prolog que usa lógica deductiva para determinar si Juan está ebrio.
+        Nuestra mente rara vez hace un razonamiento tan formal como lo requiere una computadora.}
 \end{figure}
 
 Sin embargo, nótese que este modelo de Hempel no distingue entre explicaciones y predicciones: el mismo razonamiento deductivo que nos lleva a explicar por qué la taza de café se enfrió también nos lleva a predecir que las tazas de café que dejemos en al aire frío se enfriarán, o que Juan se embriagará cada vez que tome tequila.
