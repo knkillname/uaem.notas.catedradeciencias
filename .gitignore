@@ -308,8 +308,18 @@ TSWLatexianTemp*
 *.ncx
 content.opf
 catedraciencias.css
+
+## EPUB build artifacts / staging directories
+epub_work/
+epub/
+catedraciencias-epub/
+salida/
+
+## Python
+__pycache__/
 catedraciencias-epub/
 epub/
+salida/
 
 ## LuaLaTeX temporary directories
 luatex.*/
