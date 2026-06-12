@@ -323,3 +323,7 @@ salida/
 
 ## LuaLaTeX temporary directories
 luatex.*/
+
+## latexindent backups and temp files
+*.bak[0-9]
+*.formatted*

@@ -39,7 +39,7 @@ FONTS_JETBRAINS = \
 	JetBrainsMonoNL-Italic.ttf \
 	JetBrainsMonoNL-BoldItalic.ttf
 
-.PHONY: all clean view epub epub-view
+.PHONY: all clean view epub epub-view format format-check
 
 all: $(DIR_SALIDA)/$(DOCUMENTO).pdf $(DIR_SALIDA)/$(DOCUMENTO).epub
 
@@ -102,3 +102,26 @@ clean:
 	done
 	rm -f $(DOCUMENTO)ch*.html $(DOCUMENTO)li*.html content.opf
 	rm -f capitulos/*.aux preambulo/*.aux
+	rm -f *.bak[0-9] capitulos/*.bak[0-9] preambulo/*.bak[0-9]
+	rm -f *.formatted*
+
+# ---- Formateo ----
+
+format:
+	latexindent -w -s -l $(DOCUMENTO).tex
+	latexindent -w -s -l capitulos/*.tex
+	latexindent -w -s -l preambulo/*.tex
+
+format-check:
+	@fail=0; \
+	for f in $(DOCUMENTO).tex capitulos/*.tex preambulo/*.tex; do \
+		tmp=$$(mktemp /tmp/latexindent-XXXXXX.tex); \
+		latexindent -s -l "$$f" -o="$$tmp" 2>/dev/null; \
+		if ! cmp -s "$$f" "$$tmp"; then \
+			echo "FAIL: $$f needs formatting"; \
+			fail=1; \
+		fi; \
+		rm -f "$$tmp"; \
+	done; \
+	if [ $$fail -eq 0 ]; then echo "OK: all files formatted"; fi; \
+	exit $$fail

@@ -14,12 +14,12 @@
 \colorlet{sectioningcolor}{MidnightBlue}
 \colorlet{secondarycolor}{DimGray}
 \KOMAoptions{
-  BCOR=5mm,
-  DIV=11,
-  headings=big,
-  headsepline,
-  headinclude=false,
-  footinclude=false
+	BCOR=5mm,
+	DIV=11,
+	headings=big,
+	headsepline,
+	headinclude=false,
+	footinclude=false
 }
 
 \clearpairofpagestyles
@@ -31,18 +31,18 @@
 
 % ### Capítulos
 \setkomafont{disposition}{ %
-  \color{sectioningcolor}\rmfamily\bfseries\scshape}
+	\color{sectioningcolor}\rmfamily\bfseries\scshape}
 \renewcommand*{\chapterformat}{%
-  \color{secondarycolor}\bfseries\Huge%
-  \mbox{\chapappifchapterprefix{\nobreakspace}\thechapter%
-    \autodot\IfUsePrefixLine{}{\enskip}}}
+	\color{secondarycolor}\bfseries\Huge%
+	\mbox{\chapappifchapterprefix{\nobreakspace}\thechapter%
+		\autodot\IfUsePrefixLine{}{\enskip}}}
 \addtokomafont{chapter}{\color{sectioningcolor}}
 \makeatletter
 \renewcommand{\chapterlinesformat}[3]{%
-  \parbox{\dimexpr\linewidth-2\fboxrule-2\fboxsep}{%
-    \raggedchapter
-    \@hangfrom{#2}#3%
-  }\newline%
+	\parbox{\dimexpr\linewidth-2\fboxrule-2\fboxsep}{%
+		\raggedchapter
+		\@hangfrom{#2}#3%
+	}\newline%
 }
 \makeatother
 

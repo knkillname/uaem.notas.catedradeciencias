@@ -1,0 +1,58 @@
+# latexindent configuration for Cátedra de Ciencias
+# Opinionated defaults, similar in spirit to Python's "black"
+
+# ---- Basic indentation ----
+defaultIndent: "  "
+
+# ---- Vertical spacing ----
+preserveBlankLines: 1
+condenseMultipleBlankLinesInto: 1
+
+# ---- Verbatim blocks: content left untouched ----
+verbatimEnvironments:
+  minted: 1
+  listing: 1
+  verbatim: 1
+  lstlisting: 1
+
+# ---- Alignment in tabular/align/etc ----
+lookForAlignDelims:
+  tabular:
+    delims: 1
+    alignDoubleBackSlash: 1
+    spacesBeforeDoubleBackSlash: 0
+    dontMeasure: 0
+  tabularx:
+    delims: 1
+    alignDoubleBackSlash: 1
+    spacesBeforeDoubleBackSlash: 0
+  longtable:
+    delims: 1
+    alignDoubleBackSlash: 1
+  align:
+    delims: 1
+  align*:
+    delims: 1
+  alignat:
+    delims: 1
+  alignat*:
+    delims: 1
+  equation:
+    delims: 1
+  equation*:
+    delims: 1
+  eqnarray:
+    delims: 1
+  eqnarray*:
+    delims: 1
+  matrix:
+    delims: 1
+  bmatrix:
+    delims: 1
+  pmatrix:
+    delims: 1
+
+# ---- Trailing whitespace ----
+removeTrailingWhitespace:
+  beforeProcessing: 1
+  afterProcessing: 1

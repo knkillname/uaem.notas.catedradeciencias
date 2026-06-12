@@ -7,16 +7,26 @@
 % URLs al pie de página
 \newcommand{\footurl}[1]{\footnote{\href{#1}{\url{#1}}}}
 
+% Guardar el \parindent del documento para usarlo dentro de minipages
+\newlength{\normalparindent}
+\setlength{\normalparindent}{\parindent}
+
+% Radio de esquinas redondeadas para entornos con color de fondo
+\newcommand{\bgboxradius}{6pt}
+\newcommand{\bgboxpadding}{7pt}
+
 % ### Entorno para hacer divagaciones 'digress'
 \newcommand{\digresswidth}{0.985\textwidth}
 \colorlet{digresscolor}{Linen}
 \newsavebox{\digressbox}
 \newenvironment{digress}[1]{
     \begin{lrbox}{\digressbox}\begin{minipage}{\digresswidth}
+            \setlength{\parindent}{\normalparindent}%
             {\subsubsection*{{\normalfont\emoji{mag}} #1}}}
             {\end{minipage}\end{lrbox}
     \bigskip\par\noindent%
-    \colorbox{digresscolor}{\usebox{\digressbox}}\bigskip}
+    \tikz[baseline]{\node[fill=digresscolor, rounded corners=\bgboxradius,
+          inner sep=\bgboxpadding]{\usebox{\digressbox}};}\bigskip}
 
 % ### Entorno para resaltar conceptos importantes 'remember'
 % con un emoji de disquete.
@@ -25,10 +35,12 @@
 \newsavebox{\rememberbox}
 \newenvironment{remember}{
     \begin{lrbox}{\rememberbox}\begin{minipage}{\rememberwidth}
+            \setlength{\parindent}{\normalparindent}%
             {\subsubsection*{{\normalfont\emoji{floppy-disk}} Para recordar}}}
             {\end{minipage}\end{lrbox}
     \bigskip\par\noindent%
-    \colorbox{remembercolor}{\usebox{\rememberbox}}\bigskip}
+    \tikz[baseline]{\node[fill=remembercolor, rounded corners=\bgboxradius,
+          inner sep=\bgboxpadding]{\usebox{\rememberbox}};}\bigskip}
 
 % Matemáticas
 % -----------
