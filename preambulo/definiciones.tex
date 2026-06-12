@@ -4,6 +4,16 @@
 \newcommand\terminology{\@dblarg\@terminology}
 \makeatother
 
+% Comando para referenciar personas en el texto y el índice
+% \person{Aristóteles} → índice: "Aristóteles"
+% \person[Bacon]{Francis} → typeset: "Francis Bacon", índice: "Bacon, Francis"
+\newcommand{\person}[2][]{%
+  \ifx\relax#1\relax
+    #2\index{#2}%
+  \else
+    #2 #1\index{#1, #2}%
+  \fi}
+
 % URLs al pie de página
 \newcommand{\footurl}[1]{\footnote{\href{#1}{\url{#1}}}}
 

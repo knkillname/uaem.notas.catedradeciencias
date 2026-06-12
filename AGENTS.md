@@ -46,7 +46,8 @@ Examenes/                 # Exam files in Markdown
 - **Document class:** `scrbook` (KOMA-Script) — use KOMA commands (`\KOMAoptions`, `\setkomafont`, etc.) for styling.
 - **Fonts:** TeX Gyre Pagella (serif/math), TeX Gyre Heros (sans), JetBrains Mono NL (mono).
 - **Labels:** Chapters `\label{cha:...}`, sections `\label{sec:...}`, subsections `\label{sub:...}`, figures `\label{fig:...}`, remember blocks `\label{rem:...}`.
-- **Index entries:** `\index{key}{display text}` — used throughout for the backmatter index.
+- **Index entries:** `\index{key}` for concepts/terms; `\person[name]{Name}` for people (see table below).
+- **Person index:** Use `\person{Aristóteles}` (single name) or `\person[Bacon]{Francis}` (last, first) — indexes automatically sorted by last name.
 - **Citations:** `\cite{key}` using biber/biblatex with `style=numeric`.
 - **Cross-references:** Use `\url{}` for URLs, `\href{}{}` for hyperlinks.
 
@@ -57,6 +58,7 @@ Defined in `preambulo/definiciones.tex`:
 | Command/Environment | Purpose |
 |---------------------|---------|
 | `\terminology[optional]{Term}` | Bold term + index entry |
+| `\person{Aristóteles}` / `\person[Bacon]{Francis}` | Person name in text + index sorted by last name |
 | `\footurl{URL}` | URL as footnote |
 | `\Verdadero` / `\Falso` | Small caps True/False |
 | `\begin{digress}{Title}...\end{digress}` | Sidebar / digression box (🪄) |
@@ -72,6 +74,7 @@ Defined in `preambulo/definiciones.tex`:
 4. Use `\section{}`, `\subsection{}`, `\subsection*{}` (starred = unnumbered) for structure
 5. Wrap key concepts in `\begin{remember}...\end{remember}` with a `\label{rem:...}`
 6. Use `\terminology[optional]{Term}` for glossary/index terms
+7. Use `\person[name]{Name}` for people — the index is automatically sorted by last name
 
 ## Images
 

@@ -1,7 +1,7 @@
 \documentclass[letterpaper, 12pt, twoside, chapter, spanish]{scrbook}
 \usepackage{polyglossia}
 \setdefaultlanguage{spanish}
-\gappto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 \usepackage{amssymb}
 \usepackage[fleqn]{amsmath}
 \usepackage{amsthm}
@@ -36,6 +36,8 @@
     citecolor=ForestGreen,
     urlcolor=DarkOrchid]%
     {hyperref}
+\usepackage{csquotes}
+\usepackage{etoolbox}
 
 \input{preambulo/opciones.tex}
 \input{preambulo/definiciones.tex}
