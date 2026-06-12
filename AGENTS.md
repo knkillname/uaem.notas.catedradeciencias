@@ -1,5 +1,7 @@
 # AGENTS.md — Cátedra de Ciencias
 
+Never ignore preexisting problems; always strive to leave the code in a better state than when you found it.
+
 ## Development Environment
 
 This project runs inside a **Debian (trixie) dev container**. All tooling is pre-installed via the [Dockerfile](.devcontainer/Dockerfile):
