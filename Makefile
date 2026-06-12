@@ -46,8 +46,14 @@ all: $(DIR_SALIDA)/$(DOCUMENTO).pdf $(DIR_SALIDA)/$(DOCUMENTO).epub
 # ---- PDF ----
 
 $(DIR_SALIDA)/$(DOCUMENTO).pdf: $(DEPENDENCIAS) | $(DIR_SALIDA)
-	latexmk -shell-escape -synctex=1 -pdflatex=lualatex \
-		-interaction=nonstopmode -file-line-error -pdf $(DOCUMENTO).tex
+	lualatex -shell-escape -synctex=1 \
+		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex
+	-biber $(DOCUMENTO)
+	-makeindex $(DOCUMENTO).idx
+	lualatex -shell-escape -synctex=1 \
+		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex
+	lualatex -shell-escape -synctex=1 \
+		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex
 	cp $(DOCUMENTO).pdf $@
 
 figuras/%.pdf_tex : figuras/%.svg
@@ -90,8 +96,8 @@ view: $(DIR_SALIDA)/$(DOCUMENTO).pdf
 
 clean:
 	rm -rf _minted/ epub/ catedraciencias-epub/ auxiliares/ .mypy_cache/
-	for ext in 4ct 4tc aux bcf css dvi fdb_latexmk fls html idv idx ind lg log \
-	          ncx out pdf pyg run.xml synctex.gz tmp toc trc xref; do \
+	for ext in 4ct 4tc aux bbl bcf blg css dvi fdb_latexmk fls html idv idx ilg \
+	          ind lg log ncx out pdf pyg run.xml synctex.gz tmp toc trc xref; do \
 		rm -f "$(DOCUMENTO).$$ext"; \
 	done
 	rm -f $(DOCUMENTO)ch*.html $(DOCUMENTO)li*.html content.opf

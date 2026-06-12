@@ -18,11 +18,11 @@ This project runs inside a **Debian (trixie) dev container**. All tooling is pre
 
 | Command | Purpose |
 |---------|---------|
-| `make` | Build PDF via `latexmk -shell-escape -pdflatex=lualatex` |
-| `make clean` | Remove generated files (`git clean -Xdf`) |
+| `make` | Build PDF via `lualatex` → `biber` + `makeindex` → `lualatex` × 2, plus EPUB via `tex4ebook` |
+| `make clean` | Remove generated auxiliary files (preserves `salida/` with built PDF & EPUB) |
 | `make view` | Open the built PDF |
 
-**Engine:** LuaLaTeX + biber (bibliography). Always compile at least twice for cross-references and index.
+**Engine:** LuaLaTeX + biber (bibliography) + makeindex (index). The PDF recipe runs lualatex twice after biber/makeindex to resolve all cross-references.
 **Note:** `-shell-escape` is required for `minted` (calls `pygmentize`).
 
 ## Project Structure
