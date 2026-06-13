@@ -40,18 +40,20 @@ FONTS_JETBRAINS = \
 	JetBrainsMonoNL-BoldItalic.ttf
 
 .PHONY: all clean view epub epub-view format format-check
+.NOTPARALLEL:
 
 all: $(DIR_SALIDA)/$(DOCUMENTO).pdf $(DIR_SALIDA)/$(DOCUMENTO).epub
 
 # ---- PDF ----
 
 $(DIR_SALIDA)/$(DOCUMENTO).pdf: $(DEPENDENCIAS) | $(DIR_SALIDA)
-	lualatex -shell-escape -synctex=1 \
-		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex
+	@rm -f $(DOCUMENTO).aux capitulos/*.aux preambulo/*.aux
+	lualatex -shell-escape \
+		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex || true
 	-biber $(DOCUMENTO)
 	-makeindex $(DOCUMENTO).idx
-	lualatex -shell-escape -synctex=1 \
-		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex
+	lualatex -shell-escape \
+		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex || true
 	lualatex -shell-escape -synctex=1 \
 		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex || true
 	-cp $(DOCUMENTO).pdf $@
@@ -66,6 +68,7 @@ $(AUX_DIR):
 # ---- EPUB ----
 
 $(DIR_SALIDA)/$(DOCUMENTO).epub: $(ARCHIVOS_TEX) $(ARCHIVOS_CODIGO) bibliografia.bib $(ARCHIVOS_EPUB) img/* scripts/fix_epub_fonts.py | $(DIR_SALIDA)
+	@rm -f $(DOCUMENTO).aux capitulos/*.aux preambulo/*.aux
 	-tex4ebook -l -c epub.cfg -d epub $(DOCUMENTO).tex 2>/dev/null
 	# Extraer EPUB, inyectar fuentes + CSS, y re-empaquetar
 	mkdir -p epub_work/OEBPS/fonts
