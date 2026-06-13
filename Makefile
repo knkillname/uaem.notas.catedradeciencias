@@ -53,8 +53,8 @@ $(DIR_SALIDA)/$(DOCUMENTO).pdf: $(DEPENDENCIAS) | $(DIR_SALIDA)
 	lualatex -shell-escape -synctex=1 \
 		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex
 	lualatex -shell-escape -synctex=1 \
-		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex
-	cp $(DOCUMENTO).pdf $@
+		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex || true
+	-cp $(DOCUMENTO).pdf $@
 
 figuras/%.pdf_tex : figuras/%.svg
 	inkscape --export-latex --export-type=pdf $< \
