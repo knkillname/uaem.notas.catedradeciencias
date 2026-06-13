@@ -8,7 +8,6 @@ ARCHIVOS_TEX = \
 ARCHIVOS_SVG = $(wildcard figuras/*.svg)
 ARCHIVOS_CODIGO = $(wildcard codigos/*.*)
 ARCHIVOS_PDFTEX = $(patsubst %.svg, %.pdf_tex, $(ARCHIVOS_SVG))
-AUX_DIR = auxiliares
 DEPENDENCIAS = $(ARCHIVOS_TEX) $(ARCHIVOS_PDFTEX) \
 	$(ARCHIVOS_CODIGO) bibliografia.bib
 ARCHIVOS_EPUB = epub.cfg epub.css
@@ -44,32 +43,22 @@ FONTS_JETBRAINS = \
 
 all: $(DIR_SALIDA)/$(DOCUMENTO).pdf $(DIR_SALIDA)/$(DOCUMENTO).epub
 
-# ---- PDF ----
+# ---- PDF (latexmk) ----
 
-$(DIR_SALIDA)/$(DOCUMENTO).pdf: $(DEPENDENCIAS) | $(DIR_SALIDA)
-	@rm -f $(DOCUMENTO).aux capitulos/*.aux preambulo/*.aux
-	lualatex -shell-escape \
-		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex || true
-	-biber $(DOCUMENTO)
-	-makeindex $(DOCUMENTO).idx
-	lualatex -shell-escape \
-		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex || true
-	lualatex -shell-escape -synctex=1 \
-		-interaction=nonstopmode -file-line-error $(DOCUMENTO).tex || true
-	-cp $(DOCUMENTO).pdf $@
+$(DIR_SALIDA)/$(DOCUMENTO).pdf: $(DEPENDENCIAS) .latexmkrc | $(DIR_SALIDA)
+	@mkdir -p build/capitulos build/preambulo
+	latexmk -f -pdflua $(DOCUMENTO).tex
+	cp build/$(DOCUMENTO).pdf $@
 
 figuras/%.pdf_tex : figuras/%.svg
 	inkscape --export-latex --export-type=pdf $< \
 		--export-filename=figuras/$$(basename -s .svg $<).pdf ;
 
-$(AUX_DIR):
-	mkdir auxiliares --verbose --parents
-
 # ---- EPUB ----
 
 $(DIR_SALIDA)/$(DOCUMENTO).epub: $(ARCHIVOS_TEX) $(ARCHIVOS_CODIGO) bibliografia.bib $(ARCHIVOS_EPUB) img/* scripts/fix_epub_fonts.py | $(DIR_SALIDA)
-	@rm -f $(DOCUMENTO).aux capitulos/*.aux preambulo/*.aux
-	-tex4ebook -l -c epub.cfg -d epub $(DOCUMENTO).tex 2>/dev/null
+	@rm -f $(DOCUMENTO).aux capitulos/*.aux preambulo/*.aux build/$(DOCUMENTO).aux build/capitulos/* build/preambulo/*
+	TEXMF_OUTPUT_DIRECTORY=. tex4ebook -l -c epub.cfg -d epub $(DOCUMENTO).tex 2>/dev/null || true
 	# Extraer EPUB, inyectar fuentes + CSS, y re-empaquetar
 	mkdir -p epub_work/OEBPS/fonts
 	cd epub_work && unzip -o ../epub/$(DOCUMENTO).epub 2>/dev/null
@@ -98,15 +87,13 @@ view: $(DIR_SALIDA)/$(DOCUMENTO).pdf
 	xdg-open $<
 
 clean:
-	rm -rf _minted/ epub/ catedraciencias-epub/ auxiliares/ .mypy_cache/
-	for ext in 4ct 4tc aux bbl bcf blg css dvi fdb_latexmk fls html idv idx ilg \
-	          ind lg log ncx out pdf pyg run.xml synctex.gz tmp toc trc xref; do \
-		rm -f "$(DOCUMENTO).$$ext"; \
-	done
+	latexmk -C
+	rm -rf _minted/ epub/ catedraciencias-epub/ auxiliares/ build/ .mypy_cache/
 	rm -f $(DOCUMENTO)ch*.html $(DOCUMENTO)li*.html content.opf
 	rm -f capitulos/*.aux preambulo/*.aux
 	rm -f *.bak[0-9] capitulos/*.bak[0-9] preambulo/*.bak[0-9]
 	rm -f *.formatted*
+	rm -f $(DOCUMENTO).pdf
 
 # ---- Formateo ----
 

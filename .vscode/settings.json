@@ -68,5 +68,13 @@
         "subsecciones",
         "Vivianni",
         "xvii"
-    ]
+    ],
+    "latex-workshop.format.fixMath.enabled": true,
+    "latex-workshop.format.fixQuotes.enabled": true,
+    "latex-workshop.hover.citation.enabled": true,
+    "latex-workshop.hover.command.enabled": true,
+    "latex-workshop.hover.preview.cursor.enabled": true,
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.autoClean.run": "onSucceeded",
+    "latex-workshop.latex.auxDir": "build"
 }
