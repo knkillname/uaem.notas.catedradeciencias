@@ -26,17 +26,24 @@
 \newcommand{\bgboxpadding}{7pt}
 
 % ### Entorno para hacer divagaciones 'digress'
+% Flota como una figura para evitar saltos de página incómodos,
+% pero sin interferir con la numeración de figuras reales.
 \newcommand{\digresswidth}{0.985\textwidth}
 \colorlet{digresscolor}{Linen}
 \newsavebox{\digressbox}
+% Crear un tipo de flotante dedicado para las digresiones
+\newfloat{digressfloat}{htbp}{}
 \newenvironment{digress}[1]{
-  \begin{lrbox}{\digressbox}\begin{minipage}{\digresswidth}
-      \setlength{\parindent}{\normalparindent}%
-      {\subsubsection*{{\normalfont\emoji{mag}} #1}}}
-      {\end{minipage}\end{lrbox}
-  \bigskip\par\noindent%
-  \tikz[baseline]{\node[fill=digresscolor, rounded corners=\bgboxradius,
-      inner sep=\bgboxpadding]{\usebox{\digressbox}};}\bigskip}
+  \begin{digressfloat}
+    \centering
+    \begin{lrbox}{\digressbox}\begin{minipage}{\digresswidth}
+        \setlength{\parindent}{\normalparindent}%
+        {\subsubsection*{{\normalfont\emoji{mag}} #1}}}
+        {\end{minipage}\end{lrbox}
+    \medskip\par\noindent%
+    \tikz[baseline]{\node[fill=digresscolor, rounded corners=\bgboxradius,
+        inner sep=\bgboxpadding, draw=LightGray, line width=0.4pt]{\usebox{\digressbox}};}
+  \end{digressfloat}}
 
 % ### Entorno para resaltar conceptos importantes 'remember'
 % con un emoji de disquete.
@@ -50,7 +57,25 @@
       {\end{minipage}\end{lrbox}
   \bigskip\par\noindent%
   \tikz[baseline]{\node[fill=remembercolor, rounded corners=\bgboxradius,
-      inner sep=\bgboxpadding]{\usebox{\rememberbox}};}\bigskip}
+      inner sep=\bgboxpadding, draw=LightGray, line width=0.4pt]{\usebox{\rememberbox}};}\bigskip}
+
+% ### Entorno "En este capítulo" — lista de temas con emojis como viñetas
+\newcommand{\enestecapitulowidth}{0.985\textwidth}
+\colorlet{enestecapitulocolor}{Honeydew}
+\newsavebox{\enestecapitulobox}
+\newenvironment{enestecapitulo}{
+  \begin{lrbox}{\enestecapitulobox}\begin{minipage}{\enestecapitulowidth}
+      \setlength{\parindent}{\normalparindent}%
+      {\subsubsection*{{\normalfont\emoji{world-map}} En este capítulo}}
+      \begin{description}
+        \setkomafont{descriptionlabel}{\normalfont}
+        \setlength\itemsep{0.15em}
+        \small}
+        {\end{description}
+    \end{minipage}\end{lrbox}
+  \bigskip\par\noindent%
+  \tikz[baseline]{\node[fill=enestecapitulocolor, rounded corners=\bgboxradius,
+      inner sep=\bgboxpadding, draw=LightGray, line width=0.4pt]{\usebox{\enestecapitulobox}};}\bigskip}
 
 % Matemáticas
 % -----------
