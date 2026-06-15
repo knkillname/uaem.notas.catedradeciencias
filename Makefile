@@ -54,10 +54,22 @@ figuras/%.pdf_tex : figuras/%.svg
 	inkscape --export-latex --export-type=pdf $< \
 		--export-filename=figuras/$$(basename -s .svg $<).pdf ;
 
+# ---- Auxiliares EPUB (biber + makeindex) ----
+
+# Una sola pasada de lualatex genera .bcf y .idx
+$(DOCUMENTO).bcf $(DOCUMENTO).idx: $(ARCHIVOS_TEX) bibliografia.bib
+	@rm -f $(DOCUMENTO).aux capitulos/*.aux preambulo/*.aux
+	lualatex -shell-escape -interaction=nonstopmode $(DOCUMENTO).tex >/dev/null 2>&1 || true
+
+$(DOCUMENTO).bbl: $(DOCUMENTO).bcf bibliografia.bib
+	biber $(DOCUMENTO)
+
+$(DOCUMENTO).ind: $(DOCUMENTO).idx
+	makeindex $(DOCUMENTO).idx
+
 # ---- EPUB ----
 
-$(DIR_SALIDA)/$(DOCUMENTO).epub: $(ARCHIVOS_TEX) $(ARCHIVOS_CODIGO) bibliografia.bib $(ARCHIVOS_EPUB) img/* scripts/fix_epub_fonts.py | $(DIR_SALIDA)
-	@rm -f $(DOCUMENTO).aux capitulos/*.aux preambulo/*.aux build/$(DOCUMENTO).aux build/capitulos/* build/preambulo/*
+$(DIR_SALIDA)/$(DOCUMENTO).epub: $(ARCHIVOS_TEX) $(ARCHIVOS_CODIGO) bibliografia.bib $(ARCHIVOS_EPUB) img/* scripts/fix_epub_fonts.py $(DOCUMENTO).bbl $(DOCUMENTO).ind | $(DIR_SALIDA)
 	TEXMF_OUTPUT_DIRECTORY=. tex4ebook -l -c epub.cfg -d epub $(DOCUMENTO).tex 2>/dev/null || true
 	# Extraer EPUB, inyectar fuentes + CSS, y re-empaquetar
 	mkdir -p epub_work/OEBPS/fonts
@@ -72,6 +84,8 @@ $(DIR_SALIDA)/$(DOCUMENTO).epub: $(ARCHIVOS_TEX) $(ARCHIVOS_CODIGO) bibliografia
 	python3 scripts/fix_epub_fonts.py epub_work $(DIR_SALIDA)/$(DOCUMENTO).epub
 	# Limpiar
 	rm -rf epub_work
+	# Preservar timestamps: tex4ebook regenera .bcf/.idx pero no .bbl/.ind
+	@touch $(DOCUMENTO).bbl $(DOCUMENTO).ind
 
 epub: $(DIR_SALIDA)/$(DOCUMENTO).epub
 
@@ -88,12 +102,7 @@ view: $(DIR_SALIDA)/$(DOCUMENTO).pdf
 
 clean:
 	latexmk -C
-	rm -rf _minted/ epub/ catedraciencias-epub/ auxiliares/ build/ .mypy_cache/
-	rm -f $(DOCUMENTO)ch*.html $(DOCUMENTO)li*.html content.opf
-	rm -f capitulos/*.aux preambulo/*.aux
-	rm -f *.bak[0-9] capitulos/*.bak[0-9] preambulo/*.bak[0-9]
-	rm -f *.formatted*
-	rm -f $(DOCUMENTO).pdf
+	git clean -Xdf
 
 # ---- Formateo ----
 
