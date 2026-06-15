@@ -22,7 +22,7 @@ Ahora toca dar un paso atrás y preguntarnos: ¿hay algo que todas esas épocas,
 ¿Qué es, exactamente, eso que llamamos ciencia?
 
 Para este capítulo ten en cuenta que las herramientas de la filosofía no son las mismas que las de la ciencia.
-La principal diferencia con matemáticas y otras áreas científicas es que aquí no hay una respuesta definitiva a las preguntas que se plantean, y que el progreso se logra mediante la dialéctica: alguien propone una idea, otro le responde con una critica, y así sucesivamente hasta llegar a un consenso, aunque este no sea definitivo.
+La principal diferencia con matemáticas y otras áreas científicas es que aquí no hay una respuesta definitiva a las preguntas que se plantean, y que el progreso se logra mediante la \terminology{dialéctica}: alguien propone una idea, otro le responde con una critica, y así sucesivamente hasta llegar a un consenso, aunque este no sea definitivo.
 
 
 
@@ -350,6 +350,33 @@ El filósofo argentino \person[Bunge]{Mario} (1919--2020) abordó este problema 
 Es como cuando haces un test de personalidad y te dicen que si sacas más de 50 puntos entonces tu personalidad es la de un tamal, pero si sacas menos de 50 puntos tu personalidad es la de una enchilada: no importa cuántos puntos saques, tu personalidad es la misma.
 De la misma manera una disciplina podría ser considera \emph{científica} si cumple con cierta \emph{puntuación mínima} arbitraria dada por el catálogo de Bunge.
 
+\begin{digress}{¿Son ciencias las matemáticas, la computación y la ciencia de datos?}
+	Apliquemos sin anestesia los criterios que hemos visto —falsacionismo, empirismo, el catálogo de Bunge— a tres disciplinas que siempre provocan discusiones de sobremesa.
+
+	\paragraph*{Las matemáticas.} Según Popper, una teoría científica debe ser refutable por la experiencia\cite{Popper1959}.
+	¿Puede un experimento tumbar el Teorema de Pitágoras?
+	No, porque el triángulo euclidiano es una abstracción ideal.
+	Las matemáticas se validan mediante demostraciones lógicas, no en el laboratorio; por eso Bunge las clasifica como \terminology[ciencia!formal]{ciencia formal}: no estudian objetos del mundo material sino entidades ideales\cite{Bunge2002}.
+	Su criterio de verdad es la coherencia interna, no la contrastación empírica.
+	Esto no las hace inferiores: son el lenguaje que hace posible a todas las demás ciencias.
+
+	\paragraph*{La computación.} “Computación” es un término paraguas.
+	Hay ramas indistinguibles de las matemáticas puras (teoría de la complejidad), ramas que aplican el método experimental (interacción humano-computadora) y ramas de pura ingeniería (desarrollo de \emph{frameworks}).
+	Matti Tedre identificó tres tradiciones: teórica, científica e ingenieril\cite{Tedre2008}.
+	Herbert Simon ofreció la síntesis: la computación pertenece a las \terminology[ciencia!de lo artificial]{ciencias de lo artificial}, que estudian lo que los humanos diseñamos para un propósito, no lo que ya existe en la naturaleza\cite{Simon1969}.
+	Un algoritmo ejecutándose produce comportamientos medibles, falsables y reproducibles.
+	Como dijo Simon: \emph{en computación, el momento de la verdad es un programa en ejecución; todo lo demás es profecía}.
+
+	\paragraph*{La ciencia de datos.} Superficialmente, la ciencia de datos aplica el falsacionismo: formulas hipótesis, entrenas modelos y los validas con datos no vistos.
+	Pero los modelos modernos —redes neuronales, bosques aleatorios— son cajas negras que predicen con precisión asombrosa sin ofrecer explicación causal.
+	Carl Hempel exigía responder al \emph{¿por qué?} subsumiendo el fenómeno bajo leyes generales\cite{Hempel1965}; la ciencia de datos responde magistralmente al \emph{¿qué pasará?} y se encoge de hombros ante lo demás.
+	Leo Breiman llamó a esto las “dos culturas” del modelado: la explicativa (entender causas) y la predictiva (minimizar error)\cite{Breiman2001}.
+	Para Bunge, no es ciencia básica sino \terminology[sociotecnología predictiva]{sociotecnología predictiva}: conocimiento instrumental validado empíricamente, aunque su poder explicativo sea limitado\cite{Bunge2002}.
+
+	En resumen: las matemáticas son ciencia formal; la computación es una ciencia de lo artificial con patas en lo formal, lo empírico y lo ingenieril; y la ciencia de datos es una tecnociencia predictiva.
+	Ninguna es pseudociencia; simplemente no todas respiran con el mismo par de branquias.
+\end{digress}
+
 \section{Las revoluciones científicas}
 \label{sec:lasrevolucionescientificas}
 A finales de los años 50, cuando el profesor universitario de Historia de la Ciencia \person[Kuhn]{Thomas} (1922--1996) recorría los pasillos de la Universidad de Harvard, observó que los estudiantes de posgrado no hacen ciencia como la hacían los científicos de la historia y que, lejos de seguir un método científico impulsados por la curiosidad y la observación, estos se dedicaban a resolver problemas técnicos de una forma más bien rutinaria.
@@ -408,41 +435,41 @@ A este periodo Kuhn lo denomina \terminology{ciencia normal}.
 Es sólo cuando las anomalías se vuelven demasiado grandes que el modelo establecido se cuestiona y entra en una crisis que culmina con la propuesta y aceptación de un nuevo paradigma.
 
 % \begin{figure}[ht]
-%     \centering
+% 	\centering
 
-%     \begin{tikzpicture}[
-%             node distance=1cm,
-%             ellipsenode/.style={ellipse, draw, fill=Lavender},
-%             rectanglenode/.style={
-%                     rectangle,
-%                     draw,
-%                     minimum width=6cm,
-%                     minimum height=1.5cm,
-%                     fill=Gold
-%                 },
-%             >=stealth,
-%             line width=1pt
-%         ]
+% 	\begin{tikzpicture}[
+% 			node distance=1cm,
+% 			ellipsenode/.style={ellipse, draw, fill=Lavender},
+% 			rectanglenode/.style={
+% 					rectangle,
+% 					draw,
+% 					minimum width=6cm,
+% 					minimum height=1.5cm,
+% 					fill=Gold
+% 				},
+% 			>=stealth,
+% 			line width=1pt
+% 		]
 
-%         \node[rectanglenode] (pre) {Fase pre-científica};
-%         \node[ellipsenode, below=of pre] (acept) {Aceptación de un paradigma};
-%         \node[rectanglenode, below=of acept] (normal) {Fase de ciencia normal};
-%         \node[ellipsenode, below=of normal] (anom) {Aparición de anomalías};
-%         \node[ellipsenode, below=of anom] (nuevo) {Nuevo paradigma};
-%         \node[rectanglenode, below=of nuevo] (rev) %
-%         {Fase de revolución científica};
+% 		\node[rectanglenode] (pre) {Fase pre-científica};
+% 		\node[ellipsenode, below=of pre] (acept) {Aceptación de un paradigma};
+% 		\node[rectanglenode, below=of acept] (normal) {Fase de ciencia normal};
+% 		\node[ellipsenode, below=of normal] (anom) {Aparición de anomalías};
+% 		\node[ellipsenode, below=of anom] (nuevo) {Nuevo paradigma};
+% 		\node[rectanglenode, below=of nuevo] (rev) %
+% 		{Fase de revolución científica};
 
-%         \draw[->] (pre) -- (acept);
-%         \draw[->] (acept) -- (normal);
-%         \draw[->] (normal) -- (anom);
-%         \draw[->] (anom) -- (nuevo);
-%         \draw[->] (nuevo) -- (rev);
-%         \draw[->, dashed] (rev.east) to[out=0,in=0] (acept.east);
-%     \end{tikzpicture}
+% 		\draw[->] (pre) -- (acept);
+% 		\draw[->] (acept) -- (normal);
+% 		\draw[->] (normal) -- (anom);
+% 		\draw[->] (anom) -- (nuevo);
+% 		\draw[->] (nuevo) -- (rev);
+% 		\draw[->, dashed] (rev.east) to[out=0,in=0] (acept.east);
+% 	\end{tikzpicture}
 
-%     \caption{Según Kuhn, la ciencia no es un proceso lineal y acumulativo, sino
-%         que se da en ciclos donde un paradigma establecido es reemplazado por
-%         uno nuevo, que no necesariamente mejora al anterior.}
+% 	\caption{Según Kuhn, la ciencia no es un proceso lineal y acumulativo, sino
+% 		que se da en ciclos donde un paradigma establecido es reemplazado por
+% 		uno nuevo, que no necesariamente mejora al anterior.}
 % \end{figure}
 
 \begin{remember}
