@@ -1,8 +1,16 @@
 % ### Definición de terminología nueva.
-\makeatletter
-\newcommand{\@terminology}[2][]{\index{#1}{\boldmath \bfseries #2}}
-\newcommand\terminology{\@dblarg\@terminology}
-\makeatother
+% Uso: \terminology[entrada-índice]{Término}
+%   - El argumento obligatorio {Término} es lo que se imprime en el texto (negrita).
+%   - El argumento opcional [entrada-índice] controla cómo se ordena en el índice alfabético.
+%   - Si se omite, el término se usa también como entrada del índice.
+% Se usa \NewDocumentCommand (LaTeX3) en lugar de \newcommand porque
+% \terminology aparece dentro de \item[...], y xparse maneja correctamente
+% el anidamiento de corchetes.
+\NewDocumentCommand{\terminology}{om}{%
+  \IfNoValueTF{#1}
+  {\index{#2}{\boldmath \bfseries #2}}
+  {\index{#1}{\boldmath \bfseries #2}}%
+}
 
 % Comando para referenciar personas en el texto y el índice
 % \person{Aristóteles} → índice: “Aristóteles”
