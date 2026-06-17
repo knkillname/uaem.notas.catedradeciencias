@@ -17,7 +17,8 @@ $out_dir = "build";
 $ENV{TEXMF_OUTPUT_DIRECTORY} = 'build';
 
 # ── Compiler ──────────────────────────────────────────────────────
-$lualatex = "lualatex -shell-escape -synctex=1 "
+# -recorder generates .fls (file list) for dependency tracking.
+$lualatex = "lualatex -shell-escape -synctex=1 -recorder "
           . "-interaction=nonstopmode -file-line-error %O %S";
 
 # ── Bibliography ──────────────────────────────────────────────────

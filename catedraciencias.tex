@@ -45,6 +45,10 @@
 % ----------------------
 \makeindex
 
+% Soporte para compilación rápida por capítulo (Makefile genera
+% build/includeonly.cfg con \includeonly{...} cuando CHAPTER está definido)
+\InputIfFileExists{build/includeonly.cfg}{}{}
+
 % Contenidos del documento
 % ------------------------
 \begin{document}

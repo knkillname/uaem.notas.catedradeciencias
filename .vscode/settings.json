@@ -76,5 +76,9 @@
     "latex-workshop.hover.preview.cursor.enabled": true,
     "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.autoClean.run": "onSucceeded",
-    "latex-workshop.latex.auxDir": "build"
+    "latex-workshop.latex.auxDir": "build",
+    "chat.tools.terminal.autoApprove": {
+        "make": true,
+        "time": true
+    }
 }

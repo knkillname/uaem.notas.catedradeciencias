@@ -329,3 +329,7 @@ luatex.*/
 ## latexindent backups and temp files
 *.bak[0-9]
 *.formatted*
+
+## Build logs
+fullbuild.log
+indent.log

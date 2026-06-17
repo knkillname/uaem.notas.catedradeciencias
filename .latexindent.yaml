@@ -56,3 +56,6 @@ lookForAlignDelims:
 removeTrailingWhitespace:
   beforeProcessing: 1
   afterProcessing: 1
+
+# ---- Backup ----
+onlyOneBackUp: 1
